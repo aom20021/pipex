@@ -6,7 +6,7 @@
 /*   By: anollero <anollero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 18:34:35 by anollero          #+#    #+#             */
-/*   Updated: 2023/09/19 11:51:40 by anollero         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:04:04 by anollero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,20 @@
 */
 void	ft_files(char const *argv[], t_pipex_info *info)
 {
-	if (!access(argv[1], F_OK & R_OK))
+	if (!access(argv[1], F_OK) && !access(argv[1], R_OK))
 		info->file1 = open(argv[1], O_RDONLY);
 	else
+	{
+		perror("no se puedo abrir el fichero de entrada");
 		info->file1 = -1;
-	if (!access(argv[4], F_OK & W_OK))
+	}
+	if (!access(argv[4], F_OK) && !access(argv[4], W_OK))
 		info->file2 = open(argv[4], O_WRONLY);
 	else if (!access(argv[4], F_OK))
-		info->file2 = -1;
+	{
+		perror("no se puedo abrir el fichero de salida");
+		info->file1 = -1;
+	}
 	else
 		info->file2 = creat(argv[4], 0777);
 }
