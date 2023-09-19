@@ -2,21 +2,24 @@ NAME = pipex
 CC = gcc 
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
-OBJS = $(FILES:.c=.o)
-FILES = pipex.c pipaux.c
+AR = ar -crs
+FILES = ft_pipex.c
+SANITIZE = -fsanitize=address
 
 
 all : $(NAME)
-$(NAME) : $(OBJS)
+
+$(NAME) :
 	@make -C libft
-	@mv libft/libft.a ./libft.a
-	$(CC) $(OBJS) -fsanitize=address -g -L. -lft -o $(NAME)
+	@cp libft/libft.a .
+	@$(CC) $(CFLAGS) -L./libft -o $(NAME) $(FILES) -lft $(SANITIZE)
 clean :
 	@make -C libft fclean
-	@$(RM) $(OBJS)
+	@$(RM) $(NAME)
+	@$(RM) libft.a
 fclean : clean
 	@make -C libft fclean
-	@$(RM) libft.a
 	@$(RM) $(NAME)
+	@$(RM) libft.a
 re : fclean all
 .PHONY : all clean fclean re
