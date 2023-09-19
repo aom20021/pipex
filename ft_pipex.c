@@ -6,7 +6,7 @@
 /*   By: anollero <anollero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 18:34:35 by anollero          #+#    #+#             */
-/*   Updated: 2023/09/19 19:04:04 by anollero         ###   ########.fr       */
+/*   Updated: 2023/09/19 19:14:55 by anollero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ void	ft_files(char const *argv[], t_pipex_info *info)
 		info->file1 = open(argv[1], O_RDONLY);
 	else
 	{
-		perror("no se puedo abrir el fichero de entrada");
+		perror("no se pudo abrir el fichero de entrada");
 		info->file1 = -1;
 	}
 	if (!access(argv[4], F_OK) && !access(argv[4], W_OK))
 		info->file2 = open(argv[4], O_WRONLY);
 	else if (!access(argv[4], F_OK))
 	{
-		perror("no se puedo abrir el fichero de salida");
+		perror("no se pudo abrir el fichero de salida");
 		info->file1 = -1;
 	}
 	else
