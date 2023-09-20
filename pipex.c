@@ -6,7 +6,7 @@
 /*   By: anollero <anollero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 18:34:35 by anollero          #+#    #+#             */
-/*   Updated: 2023/09/20 13:10:17 by anollero         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:43:15 by anollero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,12 +56,12 @@ void	ft_comm_files(char const *argv[], char *envp[], t_pipex_info *info)
 	info->pipeout = inout[0];
 	ft_files(argv, info);
 	ft_commands(argv, envp, info);
-	if (info->command1 == NULL)
+	if (info->command1 == NULL && ft_strncmp(argv[2], "", 1))
 	{
 		write(0, "El primer comando no existe\n", 28);
 		info->args1 = NULL;
 	}
-	if (info->command2 == NULL)
+	if (info->command2 == NULL && ft_strncmp(argv[3], "", 1))
 	{
 		write(0, "El segundo comando no existe\n", 29);
 		info->args2 = NULL;
