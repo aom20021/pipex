@@ -6,7 +6,7 @@
 /*   By: anollero <anollero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:02:21 by anollero          #+#    #+#             */
-/*   Updated: 2023/09/20 16:08:22 by anollero         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:58:11 by anollero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,16 +73,13 @@ char	*build_command(char *path, char *command)
  * Evalua si se encontro el comando, si se encontro se envia
  * junto a sus argumentos, si no se devuelve NULL
 */
-char	*command_return(char **splitted, char *command_0, int found)
+char	*command_return(char *command_0, int found)
 {
 	int	count;
 
 	count = 0;
 	if (!found)
-	{
-		ft_free_split(splitted);
 		return (NULL);
-	}
 	else
 		return (command_0);
 }
@@ -110,5 +107,5 @@ char	*ft_command(char **path, char **command_split)
 		}
 		count++;
 	}
-	return (command_return(command_split, full_command, found));
+	return (command_return(full_command, found));
 }

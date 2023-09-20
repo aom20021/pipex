@@ -6,7 +6,7 @@
 /*   By: anollero <anollero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 18:34:35 by anollero          #+#    #+#             */
-/*   Updated: 2023/09/20 16:21:43 by anollero         ###   ########.fr       */
+/*   Updated: 2023/09/20 17:01:46 by anollero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,19 @@ void	ft_commfiles(char const *argv[], char *env[], t_pipex_info *inf, int *r)
 	ft_commands(argv, env, inf);
 	if (inf->command1 == NULL && ft_strncmp(argv[2], "", 1))
 	{
-		write(2, "El primer comando no existe\n", 28);
+		if (inf->args1 != NULL)
+			ft_putstr_fd(inf->args1[0], 2);
+		write(2, ": command not found\n", 20);
+		ft_free_split(inf->args1);
 		inf->args1 = NULL;
 	}
 	if (inf->command2 == NULL && ft_strncmp(argv[3], "", 1))
 	{
-		write(2, "El segundo comando no existe\n", 29);
+		if (inf->args2 != NULL)
+			ft_putstr_fd(inf->args2[0], 2);
+		write(2, ": command not found\n", 20);
 		*r = 127;
+		ft_free_split(inf->args2);
 		inf->args2 = NULL;
 	}
 }
@@ -86,7 +92,9 @@ int	ft_execve_first(char *envp[], t_pipex_info *info)
 		close(info->file2);
 		close(info->pipeout);
 		execve(info->command1, info->args1, envp);
-		perror("el comando no existe");
+		if (info->args1 != NULL)
+			ft_putstr_fd(info->args1[0], 2);
+		write(2, ": command not found\n", 20);
 		exit(0);
 	}
 	if (pid == -1)
@@ -110,8 +118,10 @@ int	ft_execve_second(char *envp[], t_pipex_info *info)
 		close(1);
 		dup(info->file2);
 		execve(info->command2, info->args2, envp);
-		perror("el comando no existe");
-		exit(0);
+		if (info->args2 != NULL)
+			ft_putstr_fd(info->args2[0], 2);
+		write(2, ": command not found\n", 20);
+		exit(127);
 	}
 	if (pid == -1)
 		exit(0);
