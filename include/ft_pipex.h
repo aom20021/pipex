@@ -6,7 +6,7 @@
 /*   By: anollero <anollero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 18:34:35 by anollero          #+#    #+#             */
-/*   Updated: 2023/09/19 11:49:32 by anollero         ###   ########.fr       */
+/*   Updated: 2023/09/20 13:03:52 by anollero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,11 @@ typedef struct s_pipex_info
 	int		pipein;
 	int		pipeout;
 }	t_pipex_info;
+
+void	ft_free_split(char **tofree);
+void	ft_files(char const *argv[], t_pipex_info *info);
+char	*build_command(char *path, char *command);
+char	*command_return(char **splitted, char *command_0, int found);
+char	*ft_command(char **path, char **command_split);
 
 #endif

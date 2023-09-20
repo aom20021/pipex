@@ -3,7 +3,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 AR = ar -crs
-FILES = ft_pipex.c
+FILES = pipex.c pipaux.c
 SANITIZE = -fsanitize=address
 
 
@@ -12,7 +12,7 @@ all : $(NAME)
 $(NAME) :
 	@make -C libft
 	@cp libft/libft.a .
-	@$(CC) $(CFLAGS) -L./libft -o $(NAME) $(FILES) -lft $(SANITIZE)
+	@$(CC) $(CFLAGS) -L./libft -o $(NAME) $(FILES) -lft
 clean :
 	@make -C libft fclean
 	@$(RM) $(NAME)
