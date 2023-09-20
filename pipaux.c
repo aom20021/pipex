@@ -6,7 +6,7 @@
 /*   By: anollero <anollero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:02:21 by anollero          #+#    #+#             */
-/*   Updated: 2023/09/20 16:58:11 by anollero         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:16:32 by anollero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,6 @@ char	*build_command(char *path, char *command)
 */
 char	*command_return(char *command_0, int found)
 {
-	int	count;
-
-	count = 0;
 	if (!found)
 		return (NULL);
 	else
@@ -95,6 +92,8 @@ char	*ft_command(char **path, char **command_split)
 
 	found = 0;
 	count = 0;
+	if (!access(command_split[0], F_OK & X_OK))
+		return (command_split[0]);
 	while (path[count] != NULL && !found)
 	{
 		full_command = build_command(path[count], command_split[0]);

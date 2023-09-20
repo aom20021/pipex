@@ -6,7 +6,7 @@
 /*   By: anollero <anollero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 18:34:35 by anollero          #+#    #+#             */
-/*   Updated: 2023/09/20 17:01:46 by anollero         ###   ########.fr       */
+/*   Updated: 2023/09/20 18:23:50 by anollero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,7 +99,8 @@ int	ft_execve_first(char *envp[], t_pipex_info *info)
 	}
 	if (pid == -1)
 		exit(0);
-	free(info->command1);
+	if (!(info->command1[0] == '.' || info->command1[0] == '/'))
+		free(info->command1);
 	return (pid);
 }
 
@@ -125,7 +126,8 @@ int	ft_execve_second(char *envp[], t_pipex_info *info)
 	}
 	if (pid == -1)
 		exit(0);
-	free(info->command2);
+	if (!(info->command2[0] == '.' || info->command2[0] == '/'))
+		free(info->command2);
 	return (pid);
 }
 
