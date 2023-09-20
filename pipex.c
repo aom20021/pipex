@@ -6,7 +6,7 @@
 /*   By: anollero <anollero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 18:34:35 by anollero          #+#    #+#             */
-/*   Updated: 2023/09/20 14:43:15 by anollero         ###   ########.fr       */
+/*   Updated: 2023/09/20 14:48:06 by anollero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,6 @@ int	ft_execve_second(char *envp[], t_pipex_info *info)
 		close(0);
 		dup(info->pipeout);
 		close(1);
-		dup(info->file2);
-		close(2);
 		dup(info->file2);
 		execve(info->command2, info->args2, envp);
 		perror("el comando no existe");
