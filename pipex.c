@@ -6,7 +6,7 @@
 /*   By: anollero <anollero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 18:34:35 by anollero          #+#    #+#             */
-/*   Updated: 2023/09/20 14:48:06 by anollero         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:21:43 by anollero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,25 @@ void	ft_commands(char const *argv[], char *envp[], t_pipex_info *info)
 /**
  * Mete los archivos abiertos y los comandos en el struct pipex_info
 */
-void	ft_comm_files(char const *argv[], char *envp[], t_pipex_info *info)
+void	ft_commfiles(char const *argv[], char *env[], t_pipex_info *inf, int *r)
 {
 	int	inout[2];
 
 	pipe(inout);
-	info->pipein = inout[1];
-	info->pipeout = inout[0];
-	ft_files(argv, info);
-	ft_commands(argv, envp, info);
-	if (info->command1 == NULL && ft_strncmp(argv[2], "", 1))
+	inf->pipein = inout[1];
+	inf->pipeout = inout[0];
+	ft_files(argv, inf);
+	ft_commands(argv, env, inf);
+	if (inf->command1 == NULL && ft_strncmp(argv[2], "", 1))
 	{
-		write(0, "El primer comando no existe\n", 28);
-		info->args1 = NULL;
+		write(2, "El primer comando no existe\n", 28);
+		inf->args1 = NULL;
 	}
-	if (info->command2 == NULL && ft_strncmp(argv[3], "", 1))
+	if (inf->command2 == NULL && ft_strncmp(argv[3], "", 1))
 	{
-		write(0, "El segundo comando no existe\n", 29);
-		info->args2 = NULL;
+		write(2, "El segundo comando no existe\n", 29);
+		*r = 127;
+		inf->args2 = NULL;
 	}
 }
 
@@ -123,11 +124,12 @@ int	main(int argc, char const *argv[], char *envp[])
 	t_pipex_info	*info;
 	int				pid1;
 	int				pid2;
+	int				ret;
 
 	info = malloc(sizeof(t_pipex_info));
 	if (argc != 5)
 		exit(0);
-	ft_comm_files(argv, envp, info);
+	ft_commfiles(argv, envp, info, &ret);
 	if (info->file1 != -1 && info->args1 != NULL && info->args1[0] != NULL)
 		pid1 = ft_execve_first(envp, info);
 	close(info->pipein);
@@ -143,5 +145,5 @@ int	main(int argc, char const *argv[], char *envp[])
 	ft_free_split(info->args1);
 	ft_free_split(info->args2);
 	free(info);
-	return (0);
+	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: anollero <anollero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 18:34:35 by anollero          #+#    #+#             */
-/*   Updated: 2023/09/20 13:10:15 by anollero         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:22:07 by anollero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*build_command(char *path, char *command);
 char	*command_return(char **splitted, char *command_0, int found);
 char	*ft_command(char **path, char **command_split);
 void	ft_commands(char const *argv[], char *envp[], t_pipex_info *info);
-void	ft_comm_files(char const *argv[], char *envp[], t_pipex_info *info);
+void	ft_commfiles(char const *arg[], char *env[], t_pipex_info *inf, int *r);
 int		ft_execve_first(char *envp[], t_pipex_info *info);
 int		ft_execve_second(char *envp[], t_pipex_info *info);
 int		main(int argc, char const *argv[], char *envp[]);

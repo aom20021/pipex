@@ -6,7 +6,7 @@
 /*   By: anollero <anollero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 13:02:21 by anollero          #+#    #+#             */
-/*   Updated: 2023/09/20 14:34:41 by anollero         ###   ########.fr       */
+/*   Updated: 2023/09/20 16:08:22 by anollero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void	ft_files(char const *argv[], t_pipex_info *info)
 		info->file2 = -1;
 	}
 	else
-		info->file2 = creat(argv[4], 0777);
+		info->file2 = creat(argv[4], 0666);
 }
 
 /**
