@@ -6,7 +6,7 @@
 /*   By: anollero <anollero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 15:38:16 by anollero          #+#    #+#             */
-/*   Updated: 2022/09/14 16:19:41 by anollero         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:23:33 by anollero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	ft_isdigit(int argument)
 
 	res = 1;
 	if (!(('0' <= argument && argument <= '9')))
-			res = 0;
+		res = 0;
 	return (res);
 }
 

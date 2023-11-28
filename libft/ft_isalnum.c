@@ -6,7 +6,7 @@
 /*   By: anollero <anollero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/13 15:43:03 by anollero          #+#    #+#             */
-/*   Updated: 2022/09/14 16:19:38 by anollero         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:23:19 by anollero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	ft_isalnum(int argument)
 	if (!(('A' <= argument && argument <= 'Z')
 			|| ('a' <= argument && argument <= 'z')
 			|| ('0' <= argument && argument <= '9')))
-			res = 0;
+		res = 0;
 	return (res);
 }
 

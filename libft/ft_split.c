@@ -6,7 +6,7 @@
 /*   By: anollero <anollero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/30 14:55:57 by anollero          #+#    #+#             */
-/*   Updated: 2022/12/13 14:09:42 by anollero         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:23:53 by anollero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ char	**ft_words(char const *s, char c, char **res, int count)
 	if (res == NULL)
 		return (NULL);
 	return (res);
-}	
+}
 
 char	**ft_alloc(char const *s, char c, char **res, int count)
 {

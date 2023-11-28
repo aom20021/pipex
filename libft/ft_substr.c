@@ -6,7 +6,7 @@
 /*   By: anollero <anollero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/27 15:27:10 by anollero          #+#    #+#             */
-/*   Updated: 2022/12/09 13:42:23 by anollero         ###   ########.fr       */
+/*   Updated: 2023/11/28 17:24:04 by anollero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		count = ft_strlen(&s[start]) + 1;
 	}
 	else
-	{	
+	{
 		substr = (char *)ft_calloc(len + 1, 1);
 		count = len + 1;
 	}

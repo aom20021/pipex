@@ -6,7 +6,7 @@
 /*   By: anollero <anollero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/23 13:27:41 by anollero          #+#    #+#             */
-/*   Updated: 2022/12/13 14:07:31 by anollero         ###   ########.fr       */
+/*   Updated: 2023/11/28 13:21:42 by anollero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ size_t	ft_atoi(const	char *nptr)
 
 	count = ft_spaces(nptr, &sign);
 	if (nptr[count] == '-')
-	{	
+	{
 		sign = -1;
 		count++;
 	}

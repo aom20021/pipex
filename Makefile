@@ -3,7 +3,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -f
 AR = ar -crs
-FILES = pipex.c pipaux.c
+FILES = pipex.c commands.c info.c
 SANITIZE = -fsanitize=address
 
 
