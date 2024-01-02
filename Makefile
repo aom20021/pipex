@@ -6,7 +6,6 @@ AR = ar -crs
 FILES = pipex.c commands.c info.c
 SANITIZE = -fsanitize=address
 
-
 all : $(NAME)
 
 $(NAME) :
