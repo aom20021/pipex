@@ -6,7 +6,7 @@
 /*   By: anollero <anollero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 12:58:06 by anollero          #+#    #+#             */
-/*   Updated: 2024/03/21 17:24:58 by anollero         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:36:02 by anollero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,9 +113,9 @@ int	main(int argc, char const *argv[], char *envp[])
 		waitpid(info->pid1, NULL, 0);
 	if (info->pid2 != -1)
 	{
-		waitpid(info->pid2, NULL, 0);
-		exit(WEXITSTATUS(info->pid2));
+		waitpid(info->pid2, info->return_status_2, 0);
+		exit (WEXITSTATUS(*info->return_status_2));
 	}
 	free_info(info);
-	return (127);
+	exit (127);
 }

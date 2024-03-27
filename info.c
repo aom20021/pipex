@@ -6,7 +6,7 @@
 /*   By: anollero <anollero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/30 13:30:40 by anollero          #+#    #+#             */
-/*   Updated: 2024/01/02 17:46:18 by anollero         ###   ########.fr       */
+/*   Updated: 2024/03/27 16:41:33 by anollero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	free_info(t_pipex_info *info)
 {
 	ft_free_split(info->args1);
 	ft_free_split(info->args2);
+	free(info->return_status_2);
+	free(info);
 	free(info);
 }
 
@@ -54,8 +56,9 @@ t_pipex_info	*init_info(char **envp)
 {
 	t_pipex_info	*info;
 
-	info = calloc(1, sizeof(t_pipex_info));
+	info = ft_calloc(1, sizeof(t_pipex_info));
 	info->env = env(envp);
+	info->return_status_2 = ft_calloc(1, sizeof(int));
 	pipe(info->pipe);
 	return (info);
 }

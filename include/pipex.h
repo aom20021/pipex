@@ -6,7 +6,7 @@
 /*   By: anollero <anollero@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/07 18:34:35 by anollero          #+#    #+#             */
-/*   Updated: 2023/10/30 15:12:08 by anollero         ###   ########.fr       */
+/*   Updated: 2024/03/21 17:45:44 by anollero         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ typedef struct s_pipex_info
 	int		pid2;
 	int		local_env1;
 	int		local_env2;
+	int		*return_status_2;
 }	t_pipex_info;
 
 void			ft_free_split(char **tofree);

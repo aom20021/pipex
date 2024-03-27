@@ -11,7 +11,7 @@ all : $(NAME)
 $(NAME) :
 	@make -C libft
 	@cp libft/libft.a .
-	@$(CC) $(CFLAGS) -L./libft -o $(NAME) $(FILES) -lft
+	@$(CC) $(CFLAGS) $(SANITIZE) -L./libft -o $(NAME) $(FILES) -lft
 clean :
 	@make -C libft fclean
 	@$(RM) $(NAME)
